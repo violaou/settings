@@ -1,0 +1,22 @@
+{
+  "title": "Home mapped to left cmd + left arrow",
+  "rules": [
+      {
+          "description": "Home mapped to left cmd + left",
+          "manipulators": [
+              {
+                  "from": {
+                      "key_code": "home"
+                  },
+                  "to": [
+                      {
+                          "key_code": "left_arrow",
+                          "modifiers": ["left_command"]
+                      }
+                  ],
+                  "type": "basic"
+              }
+          ]
+      }
+  ]
+}
