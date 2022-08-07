@@ -1,6 +1,7 @@
 ############## ALIASES AND FUNCTIONS ##########################
 alias zshconfig="open ~/.zshrc"
 alias ohmyzsh="open ~/.oh-my-zsh"
+alias reload-shell="source ~/.zshrc"
 
 # GIT
 alias switch="git checkout -"
@@ -11,36 +12,7 @@ alias gitpurge="prune-branches"
 # Works by pruning your tracking branches then deleting the local ones that show they are "gone" in git branch -vv
 # also keep main branch and dev
 alias prune-branches="git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | grep -v "main" | grep -v "dev" | awk '{print $1}' | xargs git branch -d -f"
-
-# pnpm multiverse
-alias enter="nvm use && pnpm run all"
 alias start="nvm use && pnpm run start"
-alias startweb="nvm use && web && pnpm run start"
-alias startapi="nvm use && api && pnpm run start"
-alias test="pnpm run test"
-alias lint="pnpm run lint"
-alias test-web="enter && cd ~/code/multiverse/js-packages/web && test && cd ~/code/multiverse && nvm use"
-alias test-api="enter && cd ~/code/multiverse/js-packages/api && test"
-alias main="cd ~/code/multiverse && nvm use && pnpm run all"
-alias db-local='psql postgresql://postgres:postgres@localhost:5432/api_development'
-
-# assumes you are in the right root dir
-alias web="cd ~/code/multiverse/js-packages/web && nvm use"
-alias api="cd ~/code/multiverse/js-packages/api && nvm use"
-alias storybook="web && pnpm run storybook && cd ~/code/multiverse e "
-alias snaps="web && pnpm run update-snapshots && main"
-alias seed="api && pnpm run seed && main"
-alias reset-db="api && pnpm run reset-db-test && main"
-alias reset-db-test="api && pnpm run reset-db-dev && pnpm run seed && pnpm run add-setsail-user user@setsail.co && main"
-alias update="cd ~/code/multiverse && git pull --autostash origin main:main && pnpm run all && nvm use"
-alias reset="clean-elastic && reset-db && reset-db-test"
-alias reset-docker="docker-compose down -v --rmi 'all' && docker-compose up && api && pnpm run create-db-test"
-alias clean-elastic="curl -X DELETE 'http://localhost:9200/_all'"
-
-## aws and node aliases
-alias awsnode="awscheck && echo 'Run [cd js-packages/api && node] to start the interactive node' && deploy/interactive-node-session.sh"
-alias awscheck="main && deploy/aws-login.py && echo 'TEST LOGIN' && aws s3 ls && deploy/aws-assume-role.py dev && aws s3 ls --profile dev"
-alias awscred="code ~/.aws/credentials"
 ######################################################################################
 
 export GIT_MERGE_AUTOEDIT=no
@@ -179,6 +151,31 @@ source $ZSH/oh-my-zsh.sh
 #https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7
 alias ls='colorls -a'
 alias lc='colorls -lA --sd'
+source ~/.nvm/nvm.sh #nvm
 source $(dirname $(gem which colorls))/tab_complete.sh
 export PATH="/usr/local/opt/libpq/bin:$PATH"
-export PATH="/usr/local/opt/go@1.17/bin:$PATH"
+# export PATH="/usr/local/opt/go@1.17/bin:$PATH"[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#To autoload the specified node version:
+# thanks to https://stackoverflow.com/questions/57110542/how-to-write-a-nvmrc-file-which-automatically-change-node-version for this
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
