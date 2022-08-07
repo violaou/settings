@@ -24,6 +24,8 @@ zsh:
     ```
     
     Set `ZSH_THEME="spaceship"` in your `.zshrc`.
+4. bash_completion
+https://sourabhbajaj.com/mac-setup/BashCompletion/
 
 
 ### clone
