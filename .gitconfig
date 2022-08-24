@@ -1,0 +1,18 @@
+[user]
+	name = Viola Ou
+	email = viola@setsail.co
+[alias]
+	last = log -1 HEAD --stat
+	cleanup-merged = "git fetch && git branch --merged | grep -v '* ' | xargs git branch --delete; };f"
+[help]
+	autocorrect = 30
+[core]
+	editor = code --wait
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+    tool = vscode
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
