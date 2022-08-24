@@ -1,6 +1,6 @@
 [user]
 	name = Viola Ou
-	email = viola@setsail.co
+	email = [insert here]
 [alias]
 	last = log -1 HEAD --stat
 	cleanup-merged = "git fetch && git branch --merged | grep -v '* ' | xargs git branch --delete; };f"
