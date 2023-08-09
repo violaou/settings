@@ -1,7 +1,7 @@
 ############## ALIASES AND FUNCTIONS ##########################
 alias zshconfig="open ~/.zshrc"
 alias ohmyzsh="open ~/.oh-my-zsh"
-alias reload-shell="source ~/.zshrc"
+alias refresh="source ~/.zshrc"
 
 # GIT
 alias switch="git checkout -"
@@ -12,7 +12,9 @@ alias gitpurge="prune-branches"
 # Works by pruning your tracking branches then deleting the local ones that show they are "gone" in git branch -vv
 # also keep main branch and dev
 alias prune-branches="git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | grep -v "main" | grep -v "dev" | awk '{print $1}' | xargs git branch -d -f"
-alias start="nvm use && pnpm run start"
+
+# changed the enterance to be name %dir (overwritten if you end up using spaceport)
+PS1="%n %1~ %# "
 ######################################################################################
 
 export GIT_MERGE_AUTOEDIT=no
@@ -34,6 +36,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+#export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:${PATH}
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/viola/.oh-my-zsh"
@@ -45,23 +48,20 @@ export ZSH="/Users/viola/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 # https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7
 ZSH_THEME="spaceship"
-SPACESHIP_PROMPT_ADD_NEWLINE="true"
 SPACESHIP_CHAR_SYMBOL=" \uf0e7"
 SPACESHIP_CHAR_PREFIX=" \uf296"
 SPACESHIP_CHAR_SUFFIX=(" ")
 SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
-SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
 SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-SPACESHIP_USER_SHOW="true"
-
-SPACESHIP_GIT_BRANCH_SUFFIX=" "
-SPACESHIP_GIT_SYMBOL="שׂ "
-
-SPACESHIP_PACKAGE_PREFIX=" ["
-SPACESHIP_PACKAGE_SUFFIX="] "
-SPACESHIP_PACKAGE_SYMBOL=""
-
-SPACESHIP_NODE_SYMBOL=" "
+SPACESHIP_USER_SHOW="needed"
+# SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
+SPACESHIP_PROMPT_PREFIXES_SHOW="false"
+# SPACESHIP_PACKAGE_PREFIX=" ["
+# SPACESHIP_PACKAGE_SUFFIX="] "
+# SPACESHIP_PACKAGE_SYMBOL=""
+# SPACESHIP_GOLANG_SYMBOL="@"
+SPACESHIP_DOCKER_COMPOSE_SYMBOL="🐳 "
+SPACESHIP_DOCKER_COMPOSE_COLOR_UP="cyan"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -125,7 +125,6 @@ SPACESHIP_NODE_SYMBOL=" "
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 # ==============================================================
@@ -153,8 +152,9 @@ alias ls='colorls -a'
 alias lc='colorls -lA --sd'
 source ~/.nvm/nvm.sh #nvm
 source $(dirname $(gem which colorls))/tab_complete.sh
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-# export PATH="/usr/local/opt/go@1.17/bin:$PATH"[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 #To autoload the specified node version:
 # thanks to https://stackoverflow.com/questions/57110542/how-to-write-a-nvmrc-file-which-automatically-change-node-version for this
@@ -176,6 +176,16 @@ load-nvmrc() {
     nvm use default
   fi
 }
-add-zsh-hook chpwd load-nvmrc
+# add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# SPACESHIP
+source /opt/homebrew/opt/spaceship/spaceship.zsh
+
+## MAKE SURE YOU KNOW WHERE THESE ARE INSTALLED
+## THESE CAN BE REMOVED
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/go@1.17/bin:$PATH"
+export PATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
+export PYTHONPATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 
