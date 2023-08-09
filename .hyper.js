@@ -1,9 +1,13 @@
-"use strict";
+'use strict';
 // Future versions of Hyper may add additional config options,
 // which will not automatically be merged into this file.
 // See https://hyper.is#cfg for all currently supported options.
 module.exports = {
     config: {
+        confirmQuit: false,
+        hyperTabs: {
+            trafficButtons: true,
+        },
         // choose either `'stable'` for receiving highly polished,
         // or `'canary'` for less polished but more frequent updates
         updateChannel: 'stable',
@@ -28,12 +32,12 @@ module.exports = {
         // set to `true` (without backticks and without quotes) for blinking cursor
         cursorBlink: true,
         // color of the text
-        foregroundColor: "#c0c0c0",
+        foregroundColor: '#c0c0c0',
         // terminal background color
         // opacity is only supported on macOS
-        backgroundColor: "#222222", // matches Freya vscode theme
+        backgroundColor: '#222222', // matches Freya vscode theme
         // terminal selection color
-        selectionColor: "rgba(75,75,75,0.25)",
+        selectionColor: 'rgba(75,75,75,0.25)',
         // border color (window, tabs)
         borderColor: '#333',
         // custom CSS to embed in the main window
@@ -41,7 +45,7 @@ module.exports = {
         // custom CSS to embed in the terminal window
         termCSS: '',
         // set custom startup directory (must be an absolute path)
-        workingDirectory: '/Users/viola/code/multiverse',
+        workingDirectory: '',
         // if you're using a Linux setup which show native menus, set to false
         // default: `true` on Linux, `true` on Windows, ignored on macOS
         showHamburgerMenu: '',
@@ -63,14 +67,14 @@ module.exports = {
             magenta: '#C839C5',
             cyan: '#20C5C6',
             white: '#C7C7C7',
-            lightBlack: '#686868',  // autosuggestion
+            lightBlack: '#686868', // autosuggestion
             lightRed: '#FD6F6B', // package
             lightGreen: '#67F86F', // node
             lightYellow: '#FFFA72', // time
             lightBlue: '#6A76FB', // unknown
             lightMagenta: '#FD7CFC', // git
-            lightCyan: '#68FDFE',  // dir
-            lightWhite: '#FFFFFF',  // prefix/suffix
+            lightCyan: '#68FDFE', // dir
+            lightWhite: '#FFFFFF', // prefix/suffix
             limeGreen: '#32CD32',
             lightCoral: '#F08080',
         },
@@ -117,7 +121,7 @@ module.exports = {
         macOptionSelectionMode: 'vertical',
         // Whether to use the WebGL renderer. Set it to false to use canvas-based
         // rendering (slower, but supports transparent backgrounds)
-        webGLRenderer: false,
+        webGLRenderer: true,
         // keypress required for weblink activation: [ctrl|alt|meta|shift]
         // todo: does not pick up config changes automatically, need to restart terminal :/
         webLinksActivationKey: '',
@@ -125,15 +129,11 @@ module.exports = {
         disableLigatures: true,
         // set to true to disable auto updates
         disableAutoUpdates: false,
+        // set to true to enable screen reading apps (like NVDA) to read the contents of the terminal
+        screenReaderMode: false,
+        // set to true to preserve working directory when creating splits or tabs
+        preserveCWD: true,
         // for advanced config flags please refer to https://hyper.is/#cfg
-
-        hyperTabs: {
-            border: true,
-            trafficButtons: true,
-            tabIconsColored: true,
-            activityColor: 'salmon',
-            closeAlign: 'right',
-        },
     },
     // a list of plugins to fetch and install from npm
     // format: [@org/]project[#version]
@@ -142,25 +142,26 @@ module.exports = {
     //   `@company/project`
     //   `project#1.0.1`
     plugins: [
-        "hyper-quit",
-        "hyper-highlight-active-pane",
-        "hyper-single-instance",
-        "hyper-relaxed",
-        "hyper-fading-scrollbar",
-        "hyper-tabs-enhanced",
-        "hyper-save-windowstate",
-        "hyperlayout",
-        "gitrocket",
-        "space-pull",
-        "hyper-font-ligatures"
+        'hyper-quit',
+        'hyper-highlight-active-pane',
+        'hyper-single-instance',
+        'hyper-relaxed',
+        'hyper-fading-scrollbar',
+        'hyper-tabs-enhanced',
+        'hyper-save-windowstate',
+        'hyperlayout',
+        'gitrocket',
+        'space-pull',
+        'hyper-font-ligatures',
+        'hyper-search',
     ],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
     // to load it and avoid it being `npm install`ed
     localPlugins: [],
     keymaps: {
-    // Example
-    // 'window:devtools': 'cmd+alt+o',
+        // Example
+        // 'window:devtools': 'cmd+alt+o',
     },
 };
 //# sourceMappingURL=config-default.js.map
