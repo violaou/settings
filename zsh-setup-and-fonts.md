@@ -171,53 +171,7 @@ Continuing in 2.0 seconds, assuming that you meant 'log'.*
         Save and close.
         
 
-3.   Open your `~/.zshrc` file and add the following:
-
-```bash
-# nvm
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# spaceship prompt specificed powerline icons and options
-# For more options, consult https://github.com/spaceship-prompt/spaceship-prompt/blob/master/docs/options.md
-ZSH_THEME="spaceship"
-
-SPACESHIP_PROMPT_ADD_NEWLINE="true"
-SPACESHIP_CHAR_SYMBOL=" \uf0e7"
-SPACESHIP_CHAR_PREFIX=" \uf296"
-SPACESHIP_CHAR_SUFFIX=(" ")
-SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
-SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
-SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-SPACESHIP_USER_SHOW="true"
-
-SPACESHIP_GIT_BRANCH_SUFFIX=" "
-SPACESHIP_GIT_SYMBOL="שׂ "
-
-SPACESHIP_PACKAGE_PREFIX=" ["
-SPACESHIP_PACKAGE_SUFFIX="] "
-SPACESHIP_PACKAGE_SYMBOL=""
-
-SPACESHIP_NODE_SYMBOL=" "
-
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/{USERNAME}/.oh-my-zsh"
-# Link oh-my-zsh.sh file as well
-source $ZSH/oh-my-zsh.sh"
-
-# colorls tab complete
-source $(dirname $(gem which colorls))/tab_complete.sh
-# colorls alias for ls
-alias ls='colorls -a'
-alias lc='colorls -lA --sd'
-
-# plugins (optional but recommended)
-plugins=(git)
-```
+3.  copy over my zsh file.
 
 <aside>
 📌 Type `source ~/.zshrc` to reload `zsh` at any point and check your results for any errors.
@@ -256,6 +210,39 @@ Personally, I like to add this:
 ```
 
 </aside>
+
+## autocomplete
+
+[zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
+Clone the repo:
+
+```
+% cd ~/Repos  # ...or wherever you keep your Git repos/Zsh plugins
+% git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git
+```
+
+Add at or near the top of your .zshrc file (before any calls to compdef):
+
+```
+source ~/Repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+```
+
+Remove any calls to compinit from your .zshrc file.
+Restart your shell.
+
+
+To update, do:
+```
+% git -C ~autocomplete pull
+```
+To uninstall, simply undo the installation steps above in reverse order:
+
+Restore the lines you deleted in step 3.
+Delete the line you added in step 2.
+Delete the repo you created in step 1.
+Restart your shell.
+
+
 
 ## ⚡️ Hyper
 
