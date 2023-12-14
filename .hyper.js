@@ -4,9 +4,16 @@
 // See https://hyper.is#cfg for all currently supported options.
 module.exports = {
     config: {
-        confirmQuit: false,
+        init: [
+            {
+                rule: ['all'],
+                commands: ['main'],
+                allowedShells: ['zsh'],
+            },
+        ],
+        confirmQuit: true,
         hyperTabs: {
-            trafficButtons: true,
+            // trafficButtons: true,
         },
         // choose either `'stable'` for receiving highly polished,
         // or `'canary'` for less polished but more frequent updates
@@ -142,18 +149,20 @@ module.exports = {
     //   `@company/project`
     //   `project#1.0.1`
     plugins: [
-        'hyper-quit',
-        'hyper-highlight-active-pane',
+        // 'hyper-quit',
+        // 'hyper-highlight-active-pane',
+        // 'hyper-confirm',
         'hyper-single-instance',
         'hyper-relaxed',
         'hyper-fading-scrollbar',
         'hyper-tabs-enhanced',
         'hyper-save-windowstate',
         'hyperlayout',
-        'gitrocket',
+        // 'gitrocket',
         'space-pull',
         'hyper-font-ligatures',
         'hyper-search',
+        'hyper-init',
     ],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
