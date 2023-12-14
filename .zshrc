@@ -1,3 +1,6 @@
+###### autocomplete
+source ~/code/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 ############## ALIASES AND FUNCTIONS ##########################
 alias zshconfig="open ~/.zshrc"
 alias ohmyzsh="open ~/.oh-my-zsh"
@@ -8,6 +11,9 @@ alias switch="git checkout -"
 alias stash="git stash"
 alias pop="git stash pop"
 alias gitpurge="prune-branches"
+alias cancel-merge="git merge --abort"
+alias abort="git merge --abort"
+alias rename="git branch -m"
 
 # Works by pruning your tracking branches then deleting the local ones that show they are "gone" in git branch -vv
 # also keep main branch and dev
@@ -188,4 +194,12 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/go@1.17/bin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 export PYTHONPATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# bit
+case ":$PATH:" in
+  *":/Users/viola/bin:"*) ;;
+  *) export PATH="$PATH:/Users/viola/bin" ;;
+esac
+# bit end
 
