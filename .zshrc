@@ -1,10 +1,11 @@
 ###### autocomplete
-source ~/code/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+#source ~/code/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 ############## ALIASES AND FUNCTIONS ##########################
-alias zshconfig="open ~/.zshrc"
-alias ohmyzsh="open ~/.oh-my-zsh"
-alias refresh="source ~/.zshrc"
+alias zshconfig="code ~/.zshrc"
+alias ohmyzsh="code ~/.oh-my-zsh"
+alias refresh="echo 'ZSH Config Reloaded!' && exec zsh"
+alias log="docker logs -f"
 
 # GIT
 alias switch="git checkout -"
@@ -17,12 +18,12 @@ alias rename="git branch -m"
 
 # Works by pruning your tracking branches then deleting the local ones that show they are "gone" in git branch -vv
 # also keep main branch and dev
-alias prune-branches="git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | grep -v "main" | grep -v "dev" | awk '{print $1}' | xargs git branch -d -f"
+alias prune-local="git branch --merged | egrep -v '(^\*|main|dev|viola)' | xargs git branch -d"
 
 # changed the enterance to be name %dir (overwritten if you end up using spaceport)
 PS1="%n %1~ %# "
 ######################################################################################
-
+##############  CUSTOM ##########################
 export GIT_MERGE_AUTOEDIT=no
 
 function cs() {
@@ -41,11 +42,13 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+#export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export PATH=/bin:/usr/bin:/usr/local/bin:/sbin:${PATH}
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/viola/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+ZSH_THEME="spaceship"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -53,27 +56,28 @@ export ZSH="/Users/viola/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 # https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7
-ZSH_THEME="spaceship"
+SPACESHIP_CHAR_SUFFIX=(" ")
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
+SPACESHIP_PROMPT_PREFIXES_SHOW="false"
 SPACESHIP_CHAR_SYMBOL=" \uf0e7"
 SPACESHIP_CHAR_PREFIX=" \uf296"
 SPACESHIP_CHAR_SUFFIX=(" ")
 SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
+SPACESHIP_PROMPT_DEFAULT_PREFIX="$USER"
 SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-SPACESHIP_USER_SHOW="needed"
-# SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="true"
-SPACESHIP_PROMPT_PREFIXES_SHOW="false"
-# SPACESHIP_PACKAGE_PREFIX=" ["
-# SPACESHIP_PACKAGE_SUFFIX="] "
-# SPACESHIP_PACKAGE_SYMBOL=""
-# SPACESHIP_GOLANG_SYMBOL="@"
-SPACESHIP_DOCKER_COMPOSE_SYMBOL="🐳 "
-SPACESHIP_DOCKER_COMPOSE_COLOR_UP="cyan"
+SPACESHIP_USER_SHOW="true"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+SPACESHIP_GIT_BRANCH_SUFFIX=" "
+SPACESHIP_GIT_SYMBOL="שׂ "
+
+SPACESHIP_PACKAGE_PREFIX=" ["
+SPACESHIP_PACKAGE_SUFFIX="] "
+SPACESHIP_PACKAGE_SYMBOL=""
+
+spaceship remove docker # removes docker
+# VIOLA PLEEASE RUN THE FOLLOWING INSIDE THE SPACESHIP TERMINAL PRIMPT:
+# spaceship remove golang
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -84,7 +88,7 @@ SPACESHIP_DOCKER_COMPOSE_COLOR_UP="cyan"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -119,7 +123,7 @@ SPACESHIP_DOCKER_COMPOSE_COLOR_UP="cyan"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -129,7 +133,7 @@ SPACESHIP_DOCKER_COMPOSE_COLOR_UP="cyan"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git F-Sy-H git z you-should-use)
 
 
 # User configuration
@@ -159,34 +163,6 @@ alias lc='colorls -lA --sd'
 source ~/.nvm/nvm.sh #nvm
 source $(dirname $(gem which colorls))/tab_complete.sh
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-#To autoload the specified node version:
-# thanks to https://stackoverflow.com/questions/57110542/how-to-write-a-nvmrc-file-which-automatically-change-node-version for this
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-# add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
-# SPACESHIP
-source /opt/homebrew/opt/spaceship/spaceship.zsh
 
 ## MAKE SURE YOU KNOW WHERE THESE ARE INSTALLED
 ## THESE CAN BE REMOVED
@@ -195,11 +171,4 @@ export PATH="/opt/homebrew/opt/go@1.17/bin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 export PYTHONPATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# bit
-case ":$PATH:" in
-  *":/Users/viola/bin:"*) ;;
-  *) export PATH="$PATH:/Users/viola/bin" ;;
-esac
-# bit end
 
