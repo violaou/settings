@@ -211,6 +211,74 @@ Personally, I like to add this:
 
 </aside>
 
+
+## fast-syntax-highlighting
+
+[fast-syntax-highlighting](https://github.com/zdharma/fast-syntax-highlighting)
+
+Clone the repo: (Oh-My-Zsh)
+
+```
+% git clone https://github.com/z-shell/F-Sy-H.git \
+  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/F-Sy-H
+```
+And add the following to your `zshrc` file, where `plugins` is defined.
+```
+F-Sy-H
+```
+Run `fast-theme -l` to list available themes.
+Then press enter
+
+## zsh-completions
+
+[zsh-completions](https://github.com/zsh-users/zsh-completions)
+
+oh-my-zsh:
+Clone the repository inside your oh-my-zsh repo:
+```
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+```
+Add it to FPATH in your .zshrc by adding the following line before source "$ZSH/oh-my-zsh.sh":
+```
+  fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+```
+Note: adding it as a regular Oh My ZSH! plugin will not work properly (see #603).
+
+## Zsh-z
+
+[Zsh-z](https://github.com/agkozak/zsh-z)
+
+Zsh-z is now included as part of Oh My Zsh! As long as you are using an up-to-date installation of Oh My Zsh, you can activate Zsh-z simply by adding z to your plugins array in your .zshrc, e.g.,
+```
+plugins=( git z )
+```
+
+It is as simple as that.
+
+
+## zsh-you-should-use
+
+[zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)
+
+
+Simple zsh plugin that reminds you that you should use one of your existing aliases for a command you just typed.
+
+![image](https://github.com/user-attachments/assets/fd844518-f748-4cb5-b671-0a4c43a2ede5)
+
+oh-my-zsh
+
+Clone this repository into $ZSH_CUSTOM/custom/plugins:
+```
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
+```
+$ZSH_CUSTOM is oh-my-zsh’s customization directory (docs).
+
+Then add you-should-use to the plugins array in your .zshrc:
+```
+plugins=( you-should-use  # .. ))
+```
+
+
 ## autocomplete
 
 [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete)
