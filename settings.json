@@ -1,4 +1,5 @@
 {
+    "editor.pasteAs.enabled": false,
     // ESLINT SETTINGS -------------------------------------------
     // "eslint.enable": false,
     // "eslint.alwaysShowStatus": true,
@@ -15,7 +16,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     // --------------------  JAVASCRIPT ---------------------
-    // "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
     // "javascript.inlayHints.enumMemberValues.enabled": true,
     // "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
     "js/ts.implicitProjectConfig.experimentalDecorators": true,
@@ -55,13 +55,11 @@
     "editor.lineHeight": 25,
     "editor.find.autoFindInSelection": "multiline",
     "explorer.confirmDelete": false,
-    // ---------------------- ETC EXTENSION SETTINGS ------------
-    "vscode-pets.theme": "castle",
     // --------------------- TERMINAL ---------------------------
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.confirmOnExit": "hasChildProcesses",
-    "terminal.integrated.fontFamily": "PowerlineSymbols, 'mononoki Nerd Font Mono', monospace",
+    "terminal.integrated.fontFamily": "PowerlineSymbols, 'Cascadia Code', 'mononoki Nerd Font Mono', monospace",
     "terminal.integrated.autoReplies": {
         "[Oh My Zsh] Would you like to check for updates? [Y/n]": "Y\r"
     },
@@ -86,7 +84,6 @@
         "editor.findMatchBackground": "#006b6b",
         "editor.findMatchHighlightBackground": "#0d929242"
     },
-    "workbench.statusBar.visible": true,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.preferredLightColorTheme": "Horizon Bright Italic",
@@ -101,12 +98,8 @@
     "git.inputValidationSubjectLength": null,
     "git.requireGitUserConfig": false,
     "git.showPushSuccessNotification": true,
-    // ----------------------ERROR LENS-----------------------
-    "errorLens.messageBackgroundMode": "none",
-    "errorLens.gutterIconsEnabled": true,
-    "errorLens.gutterIconSet": "emoji",
     // --------------------- DICTIONARIES ---------------------------
-    "cSpell.enableFiletypes": [
+    "cSpell.enabledFileTypes#": [
         "asciidoc",
         "c",
         "cpp",
@@ -175,15 +168,18 @@
         "carrierfree",
         "Carta",
         "ccscloud",
+        "Chargebee",
         "Checkmark",
         "Chuong",
         "clazz",
         "closedate",
+        "codat",
         "colorwheel",
         "combobox",
         "Commissionable",
         "Commissionee",
         "commissionees",
+        "configurables",
         "Consolas",
         "contextmenu",
         "cornflowerblue",
@@ -227,6 +223,7 @@
         "filterbox",
         "firstname",
         "flexbox",
+        "FLID",
         "fluentui",
         "fontawesome",
         "fontsource",
@@ -264,6 +261,7 @@
         "localstorage",
         "logtype",
         "LPRF",
+        "Luzmo's",
         "Macchiato",
         "Macropoint",
         "menuaction",
@@ -305,6 +303,7 @@
         "Parens",
         "parquetjs",
         "Pascale",
+        "Paystub",
         "perdim",
         "pickone",
         "pickset",
@@ -316,7 +315,10 @@
         "progressbar",
         "progressbars",
         "pyshell",
+        "RATECARD",
         "ratecon",
+        "ratecons",
+        "rconfigurable",
         "readin",
         "readonly",
         "Redsandro",
@@ -361,6 +363,7 @@
         "toolset",
         "topbar",
         "Trenta",
+        "truckstop",
         "unenabled",
         "uniflash",
         "Unsplit",
@@ -379,6 +382,7 @@
         "Webex",
         "webextension",
         "webm",
+        "websockets",
         "xhttp",
         "xlarge",
         "xxxs",
@@ -422,15 +426,15 @@
     "githubPullRequests.queries": [
         {
             "label": "Waiting For My Review",
-            "query": "is:open is:pr review-requested:${user}"
+            "query": "repo:${owner}/${repository} is:open is:pr review-requested:${user}"
         },
         {
             "label": "Assigned To Me",
-            "query": "is:open is:pr assignee:${user}"
+            "query": "repo:${owner}/${repository} is:open is:pr assignee:${user}"
         },
         {
             "label": "Created By Me",
-            "query": "is:open is:pr author:${user}"
+            "query": "repo:${owner}/${repository} is:open is:pr author:${user}"
         }
     ],
     "gitlens.mode.active": "review",
@@ -463,17 +467,6 @@
     },
     "editor.renderLineHighlight": "all",
     "githubPullRequests.fileListLayout": "flat",
-    "vscode-pets.throwBallWithMouse": true,
-    "rest-client.environmentVariables": {
-        "$shared": {
-            "baseUrl": "http://localhost:3001",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYjc3Yjk4YTUtMzNmNi00Yjg3LTg5ZDYtZjgwZjYzN2U2NTAzIiwib3JnX2lkIjoiNWI1ODVlYmQtNjMzYS00ZTg3LThjMjktZmZjZDg4N2RiMjM4Iiwib3JnX3R5cGVfaWQiOiJicm9rZXIiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImFjY2Vzc190eXBlIjoicmVndWxhciIsImV4cCI6MTY5MjczNzI4MiwiaWF0IjoxNjkyNzE1NjgyfQ.DPn-dbXdp0mI4bdR5UtPPy77ifMLTcPo4_wH21XyVEI"
-        }
-    },
-    // "prettier.singleQuote": true,
-    // "prettier.semi": false,
-    // "prettier.jsxSingleQuote": true,
-    // "prettier.printWidth": 120,
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
@@ -489,7 +482,6 @@
     "prettier.trailingComma": "es5",
     "prettier.singleQuote": true,
     "editor.fontSize": 13,
-    "diffEditor.useInlineViewWhenSpaceIsLimited": false,
     "editor.experimentalWhitespaceRendering": "off",
     "cSpell.enabled": true,
     "git.confirmSync": false,
@@ -500,34 +492,35 @@
     "playwright.showTrace": false,
     "workbench.editor.empty.hint": "hidden",
     "gitlens.views.showRelativeDateMarkers": false,
-    "rsp-ui.enableStartServerOnActivation": [
-        {
-            "id": "redhat.vscode-community-server-connector",
-            "name": "Community Server Connector",
-            "startOnActivation": true
-        }
-    ],
     "editor.accessibilitySupport": "off",
-    "gitlens.views.branches.branches.layout": "list",
-    "gitlens.views.branches.files.layout": "list",
+    "gitlens.views.branches.files.layout": "tree",
     "git.ignoreRebaseWarning": true,
     "window.zoomLevel": -0.3,
-    "mjml.mailSender": "integrationsetup@roserocket.com",
-    "mjml.mailjetAPIKey": "83c74426d54835efe51da8c68a3e2af5",
-    "mjml.mailjetAPISecret": "c0fe3fa3e354db300b79e84f0cd3acd2",
     "editor.minimap.showSlider": "always",
     "editor.minimap.size": "fit",
     "prisma.showPrismaDataPlatformNotification": false,
     "github.copilot.editor.enableAutoCompletions": true,
     "scm.showHistoryGraph": false,
     "scm.defaultViewMode": "list",
-    "settingsSync.ignoredExtensions": [
-        "Prisma.prisma",
-        "attilabuti.vscode-mjml",
-        "ms-playwright.playwright",
-        "ms-vscode-remote.remote-containers",
-        "unifiedjs.vscode-mdx"
-    ],
-    "inlineChat.experimental.enableZoneToolbar": true,
-    "inlineChat.finishOnType": true
+    "inlineChat.finishOnType": true,
+    "editor.inlineSuggest.showToolbar": "always",
+    "gitlens.rebaseEditor.ordering": "asc",
+    "diffEditor.ignoreTrimWhitespace": true,
+    "terminal.integrated.fontLigatures": true,
+    "gitlens.views.scm.grouped.views": {
+        "commits": false,
+        "branches": false,
+        "remotes": false,
+        "stashes": false,
+        "tags": false,
+        "worktrees": false,
+        "contributors": false,
+        "repositories": false,
+        "searchAndCompare": false,
+        "launchpad": false
+    },
+    "gitlens.views.branches.showBranchComparison": false,
+    "gitlens.views.branches.pullRequests.showForBranches": false,
+    "gitlens.views.branches.pullRequests.enabled": false,
+    "chat.editing.alwaysSaveWithGeneratedChanges": true
 }
