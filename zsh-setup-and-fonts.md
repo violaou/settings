@@ -17,6 +17,13 @@
 
 ## 📚 Using [Mono Fonts with Ligatures](https://www.hanselman.com/blog/monospaced-programming-fonts-with-ligatures) for Code
 
+### for hyper setup:
+```
+brew install --cask font-powerline-symbols
+
+brew install --cask font-mononoki-nerd-font
+```
+
 ### **Fira Code:** [https://github.com/tonsky/FiraCode](https://github.com/tonsky/FiraCode)
 
 The most widely adapted and probably the the font with the most ligature support.
