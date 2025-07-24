@@ -21,6 +21,8 @@ module.exports = {
         // default font size in pixels for all tabs
         fontSize: 13,
         // font family with optional fallbacks
+        // brew install --cask font-mononoki-nerd-font
+        // brew install --cask font-powerline-symbols
         fontFamily: 'PowerlineSymbols, "mononoki Nerd Font Mono"',
         // default font weight: 'normal' or 'bold'
         fontWeight: 'normal',
