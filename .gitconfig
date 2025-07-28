@@ -1,6 +1,6 @@
 [user]
 	name = violaou
-	email = [need here]
+	email = viola.o@roserocket.com
 [alias]
 	last = log -1 HEAD --stat
 	cleanup-merged = "git fetch && git branch --merged | grep -v '* ' | xargs git branch --delete; };f"
@@ -8,6 +8,7 @@
 	autocorrect = 20
 [core]
 	editor = code --wait
+	ignorecase = false
 [diff]
     tool = vscode
 [difftool "vscode"]
@@ -18,13 +19,7 @@
     cmd = code --wait $MERGED
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-	insteadOf = https://github.com/
-	insteadOf = https://github.com/
-	insteadOf = https://github.com/
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
-	insteadOf = https://github.com/
-	insteadOf = https://github.com/
 	insteadOf = https://github.com/
 [init]
 	defaultBranch = main
