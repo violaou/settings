@@ -4,6 +4,86 @@
 
 # 🧑‍💻Visual Studio Code
 
+# Setup and General Installation
+
+1. FiraCode: [https://github.com/tonsky/FiraCode/releases](https://github.com/tonsky/FiraCode/releases)
+2. cascadia-code: [https://github.com/microsoft/cascadia-code](https://github.com/microsoft/cascadia-code)
+3. Download and install these two fonts into FontBook:
+   ```
+   brew install --cask font-mononoki-nerd-font
+   brew install --cask font-powerline-symbols
+   ```
+   **Mononoki Nerd Font:** [https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Mononoki](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Mononoki)
+   
+   **PowerlineSymbols.otf:** [https://github.com/ryanoasis/nerd-fonts/blob/master/src/glyphs/PowerlineSymbols.otf](https://github.com/ryanoasis/nerd-fonts/blob/master/src/glyphs/PowerlineSymbols.otf)
+
+4. Install https://github.com/athityakumar/colorls - file list colorizer
+        
+   Check your ruby installation 3.0+:
+        
+    ```bash
+    ruby -v
+    brew install ruby
+    sudo gem install public_suffix -v 5.1.1  # 5.1.1 is the version that colorls requires
+    ```
+        
+   Install:
+        
+    ```bash
+    sudo gem install colorls
+    ```
+ 5. Install oh-my-zsh
+        
+    In your terminal:
+        
+    ```bash
+    *sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"*
+    ```
+        
+    Open the file `~/.zshrc.pre-oh-my-zsh` and add this for nvm:
+        
+    ```bash
+    export NVM_DIR="$HOME/.nvm"
+      [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+      [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+    ```
+        
+    Save and close.
+        
+ 6. Spaceship prompt -  [https://spaceship-prompt.sh/getting-started/](https://spaceship-prompt.sh/getting-started/)
+        
+    ```bash
+    brew install spaceship
+    ```
+    
+    Add prompt initialization to your .zshrc:
+
+    ```bash
+    echo "source $(brew --prefix)/opt/spaceship/spaceship.zsh" >>! ~/.zshrc
+    ```
+        
+    Save and close.
+       
+ 7. Install Hyper
+    ```bash
+    brew update
+    brew install --cask hyper
+    ```
+
+8. Install zsh-syntax-highlighting
+
+    ```bash
+    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
+    brew install zsh-syntax-highlighting
+    ```
+
+<aside>
+📌 Type `source ~/.zshrc` to reload `zsh` at any point and check your results for any errors.
+</aside>
+
+
+Your terminal should look something like this!
+
 ### Helpful Extensions
 
 - **Code Spell Checker** ✅- [https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
@@ -17,12 +97,6 @@
 
 ## 📚 Using [Mono Fonts with Ligatures](https://www.hanselman.com/blog/monospaced-programming-fonts-with-ligatures) for Code
 
-### for hyper setup:
-```
-brew install --cask font-powerline-symbols
-
-brew install --cask font-mononoki-nerd-font
-```
 
 ### **Fira Code:** [https://github.com/tonsky/FiraCode](https://github.com/tonsky/FiraCode)
 
@@ -56,7 +130,6 @@ Microsoft's shot at making a ligature font. What sets it apart from Fira is the 
 
 <aside>
 📌 Potentially you will need to Reload the Window to see changes.
-
 </aside>
 
 ---
@@ -122,75 +195,6 @@ Continuing in 2.0 seconds, assuming that you meant 'log'.*
 
 ---
 
-### Installation
-
-1. Download and install these two fonts into FontBook:
-    1. **Mononoki Nerd Font:** [https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Mononoki](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Mononoki)
-    2. **PowerlineSymbols.otf:** [https://github.com/ryanoasis/nerd-fonts/blob/master/src/glyphs/PowerlineSymbols.otf](https://github.com/ryanoasis/nerd-fonts/blob/master/src/glyphs/PowerlineSymbols.otf)
-
-1. Install ‣,  https://github.com/athityakumar/colorls and ‣
-    1. ‣ 
-        
-        In your terminal:
-        
-        ```bash
-        *sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"*
-        ```
-        
-        Open the file `~/.zshrc.pre-oh-my-zsh` and add this for nvm:
-        
-        ```bash
-        export NVM_DIR="$HOME/.nvm"
-          [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-          [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-        ```
-        
-        Save and close.
-        
-    2. https://github.com/athityakumar/colorls - file list colorizer
-        
-        Check your ruby installation:
-        
-        ```bash
-        ruby -v
-        ```
-        
-        Install:
-        
-        ```bash
-        gem install colorls
-        ```
-        
-    3. https://github.com/spaceship-prompt/spaceship-prompt -  [https://spaceship-prompt.sh/getting-started/](https://spaceship-prompt.sh/getting-started/)
-        
-        Clone this repo into zsh themes:
-        
-        ```bash
-        git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-        ```
-        
-        Symlink `spaceship.zsh-theme` to your oh-my-zsh custom themes directory:
-        
-        ```bash
-        ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-        ```
-        
-        Save and close.
-        
-
-3.  copy over my zsh file.
-
-<aside>
-📌 Type `source ~/.zshrc` to reload `zsh` at any point and check your results for any errors.
-
-</aside>
-
-![Your terminal should look something like this!](Useful%20Tools%20and%20Extensions%208fcc1eb512a84e119d1e08c6aa3b32d0/Untitled%203.png)
-
-Your terminal should look something like this!
-
-**If you're not interested in using Hyper, and you're done! You can stop here and enjoy your new config for `zsh` 👌**
-
 ### To use your new fonts in the `zsh` terminal within VScode:
 
 1. Open the settings.json file for VS Code via the Command Palette : `Cmd+Shift+P`
@@ -219,22 +223,21 @@ Personally, I like to add this:
 </aside>
 
 
-## fast-syntax-highlighting
+## zsh-syntax-highlighting
 
 [fast-syntax-highlighting](https://github.com/zdharma/fast-syntax-highlighting)
 
 Clone the repo: (Oh-My-Zsh)
 
 ```
-% git clone https://github.com/z-shell/F-Sy-H.git \
-  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/F-Sy-H
+brew install zsh-syntax-highlighting
 ```
-And add the following to your `zshrc` file, where `plugins` is defined.
+Open .zshrc, make sure there is an EMPTY line at the end, then
 ```
-F-Sy-H
+echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 ```
-Run `fast-theme -l` to list available themes.
-Then press enter
+
+then hit `refresh`
 
 ## zsh-completions
 
@@ -243,11 +246,11 @@ Then press enter
 oh-my-zsh:
 Clone the repository inside your oh-my-zsh repo:
 ```
-  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 ```
 Add it to FPATH in your .zshrc by adding the following line before source "$ZSH/oh-my-zsh.sh":
 ```
-  fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 ```
 Note: adding it as a regular Oh My ZSH! plugin will not work properly (see #603).
 
