@@ -1,9 +1,9 @@
-# source ~/code/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
 ########## LOCAL SPECIFIC ALIASES AND FUNCTIONS ################
-# add here
+
+
 
 ############## ALIASES AND FUNCTIONS ##########################
+alias code="cursor"
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias refresh="echo 'ZSH Config Reloaded!' && exec zsh"
@@ -81,7 +81,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git F-Sy-H git z you-should-use)
+plugins=(git z you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -210,3 +210,12 @@ alias ls='colorls -a'
 alias lc='colorls -lA --sd'
 source ~/.nvm/nvm.sh #nvm
 source $(dirname $(gem which colorls))/tab_complete.sh
+source /opt/homebrew/opt/spaceship/spaceship.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+eval "$(dev _hook)"
+
+[[ -d "/opt/clio/bin/devxp" ]] && export PATH="/opt/clio/bin/devxp:$PATH"
+
+# Created by `pipx` on 2026-02-27 16:57:04
+export PATH="$PATH:/Users/viola/.local/bin"
