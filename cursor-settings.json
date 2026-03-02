@@ -458,7 +458,6 @@
         "editor.defaultFormatter": "ms-python.python",
         "editor.formatOnType": true
     },
-    "vsintellicode.modify.editor.suggestSelection": "choseToUpdateConfiguration",
     "editor.scrollbar.verticalScrollbarSize": 10,
     "editor.scrollbar.horizontalScrollbarSize": 8,
     "window.confirmBeforeClose": "keyboardOnly",
@@ -466,20 +465,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.renderLineHighlight": "all",
-    "githubPullRequests.fileListLayout": "flat",
-    "rest-client.environmentVariables": {
-        "$shared": {
-            "baseUrl": "http://localhost:3001",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYjc3Yjk4YTUtMzNmNi00Yjg3LTg5ZDYtZjgwZjYzN2U2NTAzIiwib3JnX2lkIjoiNWI1ODVlYmQtNjMzYS00ZTg3LThjMjktZmZjZDg4N2RiMjM4Iiwib3JnX3R5cGVfaWQiOiJicm9rZXIiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImFjY2Vzc190eXBlIjoicmVndWxhciIsImV4cCI6MTY5MjczNzI4MiwiaWF0IjoxNjkyNzE1NjgyfQ.DPn-dbXdp0mI4bdR5UtPPy77ifMLTcPo4_wH21XyVEI"
-        }
-    },
     "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": true,
-        "markdown": true,
-        "scminput": false
-    },
     "workbench.colorTheme": "Ayu Mirage",
     "workbench.sideBar.location": "right",
     /// prettier for work
@@ -502,9 +488,6 @@
     "gitlens.views.branches.files.layout": "tree",
     "git.ignoreRebaseWarning": true,
     "window.zoomLevel": -0.3,
-    "mjml.mailSender": "integrationsetup@roserocket.com",
-    "mjml.mailjetAPIKey": "83c74426d54835efe51da8c68a3e2af5",
-    "mjml.mailjetAPISecret": "c0fe3fa3e354db300b79e84f0cd3acd2",
     "editor.minimap.showSlider": "always",
     "editor.minimap.size": "fit",
     "prisma.showPrismaDataPlatformNotification": false,
@@ -538,5 +521,4 @@
     "gitlens.views.branches.showBranchComparison": false,
     "gitlens.views.branches.pullRequests.showForBranches": false,
     "gitlens.views.branches.pullRequests.enabled": false,
-    "chat.editing.alwaysSaveWithGeneratedChanges": true
 }
